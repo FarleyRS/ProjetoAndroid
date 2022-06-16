@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CriarGrupoFragment">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="94dp"
+                android:layout_marginTop="30dp"
+                android:text="Criar Grupo"
+                android:textAlignment="center"
+                android:textSize="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtNomeGrupo"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/style_radius"
+                android:hint="Nome:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_layout" />
+
+            <EditText
+                android:id="@+id/edtTemaGrupo"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/style_radius"
+                android:hint="Tema:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtNomeGrupo" />
+
+            <EditText
+                android:id="@+id/edtDataEntraga"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="44dp"
+                android:background="@drawable/style_radius"
+                android:hint="Data de Entrega:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtTemaGrupo" />
+
+            <Button
+                android:id="@+id/btConcluir"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/botton_style"
+                android:text="Concluir"
+                android:textAlignment="center"
+                android:textColor="@color/Branco"
+                android:textSize="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtDataEntraga" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

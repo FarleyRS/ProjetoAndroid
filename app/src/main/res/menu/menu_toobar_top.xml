@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ContatosActivity">
+
+    <item android:id="@+id/procurarContato"
+        android:title="Procurar contato"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/addContato"
+        android:title="Adicionar novo contato"
+        android:icon="@drawable/ic_baseline_person_add_24"
+        app:showAsAction="always"/>
+</menu>
