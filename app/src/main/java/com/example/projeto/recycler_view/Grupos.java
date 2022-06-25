@@ -1,11 +1,20 @@
 package com.example.projeto.recycler_view;
 
+
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,25 +24,17 @@ import java.util.Map;
 
 public class Grupos {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static String TAG;
+    private static FirebaseDatabase database;
+    private static DatabaseReference databaseReference;
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private String nome;
-    private String tema;
+    private String NomeGrupo;
+    private String TemaGrupo;
     private String id_administrador;
-    private Date data_de_entrega;
+    private String DataEntrega;
 
     public Grupos(){ }
-
-    public Grupos(String nome){
-        this.nome = nome;
-    }
-
-    public Grupos(String nome, String tema, Date data_de_entrega, String id_administrador) {
-        this.nome = nome;
-        this.tema = tema;
-        this.data_de_entrega = data_de_entrega;
-        this.id_administrador = id_administrador;
-    }
 
     public void criarGrupo(String nome, String tema, String data_de_entrega, String id_administrador){
         Map<String, Object> dados = new HashMap<>();
@@ -56,28 +57,40 @@ public class Grupos {
             }
         });
     }
-    public String getNome() {
-        return nome;
+    public String getNomeGrupo() {
+        return NomeGrupo;
     }
 
-    public String getTema() {
-        return tema;
+    public String getTemaGrupo() {
+        return TemaGrupo;
     }
 
     public String getId_administrador() {
         return id_administrador;
     }
 
-    public Date getData_de_entrega() {
-        return data_de_entrega;
+    public String getDataEntrega() {
+        return DataEntrega;
     }
 
+    static ArrayList<Grupos> gruposList = new ArrayList();
     // metodo para mostrar os grupos na pagina Home
     public static List<Grupos> getGrupos(){
-        List<Grupos> gruposList = new ArrayList<>();
-        gruposList.add(new Grupos("Desenvolvimento WEB"));
-        gruposList.add(new Grupos("Desenvolvimento Android"));
-        gruposList.add(new Grupos("Topicos Especiais"));
-        return gruposList;
+        db.collection("Grupos")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Grupos g = document.toObject(Grupos.class);
+                                gruposList.add(g);
+                            }
+                        } else {
+                            Log.d(TAG,"Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        return  gruposList;
     }
 }

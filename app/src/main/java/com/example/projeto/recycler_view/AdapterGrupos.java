@@ -42,7 +42,7 @@ public class AdapterGrupos  extends RecyclerView.Adapter<AdapterGrupos.GruposVie
     public void onBindViewHolder(@NonNull final GruposViewHolder holder, final int position) {
 
         Grupos g = grupos.get(position);
-        holder.tNome.setText(g.getNome());
+        holder.tNome.setText(g.getNomeGrupo());
 
         if(onClickListener != null){
             holder.view.setOnClickListener(view ->
