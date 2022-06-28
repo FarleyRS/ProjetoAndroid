@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/activity_geren_grupo.xml" value="0.20416666666666666" />
         <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/activity_grupo.xml" value="0.1403985507246377" />
         <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/activity_op_grup.xml" value="0.1403985507246377" />
         <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/andapter_grupos.xml" value="0.1" />
         <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/fragment_criar_grupo.xml" value="0.22" />
         <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/menu/menu_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Trabalhos e Materias/AndroidStudioProjects/ProjetoAndroid/app/src/main/res/menu/menu_toobar_top.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/f7739/AndroidStudioProjects/projeto/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.117" />
         <entry key="..\:/Users/f7739/AndroidStudioProjects/projeto/app/src/main/res/drawable/botton_style.xml" value="0.172" />
         <entry key="..\:/Users/f7739/AndroidStudioProjects/projeto/app/src/main/res/drawable/button_efect.xml" value="0.1115" />

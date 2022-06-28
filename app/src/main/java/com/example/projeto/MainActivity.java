@@ -14,11 +14,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.example.projeto.fragments.ContatsFragment;
 import com.example.projeto.fragments.HomeFragment;
 import com.example.projeto.login.LoginActivity;
+import com.example.projeto.recycler_view.Grupos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -62,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if(d == R.id.btGrupo){
             Intent intent = new Intent(this,OpGrupActivity.class);
             startActivity(intent);
+        }else if(d == R.id.btConfig){
+            toast("Configurações");
+        }else if(d == R.id.btContats){
+            toast("Contatos");
         }else if(d == R.id.btLogout){
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, LoginActivity.class));
@@ -69,7 +75,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return true;
     }
 
-        @Override
+    public void toast(String string){
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.btConvits: {

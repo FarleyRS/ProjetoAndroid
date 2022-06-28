@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -28,6 +29,7 @@ public class Grupos {
     private static FirebaseDatabase database;
     private static DatabaseReference databaseReference;
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static String id_user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     private String NomeGrupo;
     private String TemaGrupo;
@@ -82,15 +84,18 @@ public class Grupos {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            gruposList.clear(); //Limpa a lista antes de adicionar
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Grupos g = document.toObject(Grupos.class);
-                                gruposList.add(g);
+                                Grupos g = document.toObject(Grupos.class); //istancia os valores do Firebase na classe Grupos
+                                if (id_user.equals(g.getId_administrador())) {
+                                    gruposList.add(g); //Adiciona os objetos grupos a lista
+                                }
                             }
                         } else {
                             Log.d(TAG,"Error getting documents.", task.getException());
                         }
                     }
                 });
-        return  gruposList;
+        return gruposList;     //retorna uma lista de grupos
     }
 }
