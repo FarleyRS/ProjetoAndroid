@@ -1,6 +1,7 @@
 package com.example.projeto.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -46,14 +47,14 @@ public class HomeFragment extends Fragment {
 
         //Preenche o recyclerView
         grupos = Grupos.getGrupos();
-        recyclerView.setAdapter(adapter = new AdapterGrupos(getActivity(), grupos, onClickGrupos()));
 
         return view;
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onStart() {
+        super.onStart();
+        recyclerView.setAdapter(adapter = new AdapterGrupos(getActivity(), grupos, onClickGrupos()));
     }
 
     protected AdapterGrupos.GruposOnClickListener onClickGrupos(){

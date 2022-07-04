@@ -75,10 +75,10 @@ public class Grupos {
         return DataEntrega;
     }
 
-    static ArrayList<Grupos> gruposList = new ArrayList();
+    public static ArrayList<Grupos> gruposList = new ArrayList();
     // metodo para mostrar os grupos na pagina Home
     public static List<Grupos> getGrupos(){
-        db.collection("Grupos")
+        db.collection("Grupos").whereEqualTo("id_administrador",id_user)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -87,9 +87,7 @@ public class Grupos {
                             gruposList.clear(); //Limpa a lista antes de adicionar
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Grupos g = document.toObject(Grupos.class); //istancia os valores do Firebase na classe Grupos
-                                if (id_user.equals(g.getId_administrador())) {
-                                    gruposList.add(g); //Adiciona os objetos grupos a lista
-                                }
+                                gruposList.add(g); //Adiciona os objetos grupos a lista
                             }
                         } else {
                             Log.d(TAG,"Error getting documents.", task.getException());

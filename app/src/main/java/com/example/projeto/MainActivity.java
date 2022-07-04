@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.example.projeto.fragments.ContatsFragment;
 import com.example.projeto.fragments.HomeFragment;
 import com.example.projeto.login.LoginActivity;
+import com.example.projeto.recycler_view.AdapterGrupos;
 import com.example.projeto.recycler_view.Grupos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             toast("Contatos");
         }else if(d == R.id.btLogout){
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
         return true;
     }
